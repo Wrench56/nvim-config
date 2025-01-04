@@ -1,0 +1,4 @@
+-- [[ Init ]]
+
+require("core.keymaps")
+
