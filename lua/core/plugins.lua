@@ -10,5 +10,9 @@ return {
     "neovim/nvim-lspconfig",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
-    "kdheepak/lazygit.nvim"
+    "kdheepak/lazygit.nvim",
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" }
+    }
 }
