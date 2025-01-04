@@ -19,5 +19,10 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         event = "UiEnter"
     },
-    "lewis6991/gitsigns.nvim"
+    "lewis6991/gitsigns.nvim",
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    }
 }
