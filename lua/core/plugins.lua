@@ -26,15 +26,6 @@ return {
         config = true
     },
     {
-        "pwntester/octo.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-            "nvim-tree/nvim-web-devicons"
-        },
-        event = "VeryLazy"
-    },
-    {
         "andweeb/presence.nvim",
         event = "VeryLazy"
     }
