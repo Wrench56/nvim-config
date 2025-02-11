@@ -1,16 +1,18 @@
 -- [[ LSP servers ]]
+local lspconfig = require('lspconfig')
 
-require('lspconfig').asm_lsp.setup({})
-require('lspconfig').rust_analyzer.setup({
+lspconfig.asm_lsp.setup({})
+lspconfig.ccls.setup({})
+
+lspconfig.rust_analyzer.setup({
     settings = {
         ['rust-analyzer'] = {
             check = {
-                command = "clippy";
+                command = "clippy"
             },
             diagnostics = {
-                enable = true;
+                enable = true
             }
         }
     }
 })
-require('lspconfig').ccls.setup({})
