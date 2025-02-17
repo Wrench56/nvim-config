@@ -13,3 +13,7 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
+
+-- Configure clipboard
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+
