@@ -27,5 +27,9 @@ return {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = true
+    },
+    {
+        "sphamba/smear-cursor.nvim",
+        opts = {},
     }
 }
