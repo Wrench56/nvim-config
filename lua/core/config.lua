@@ -20,3 +20,7 @@ vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 -- Enable cursorline
 vim.opt.cursorline = true
 
+-- Set custom split layout
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
