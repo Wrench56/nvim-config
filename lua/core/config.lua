@@ -17,3 +17,6 @@ vim.o.smartindent = true
 -- Configure clipboard
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
+-- Enable cursorline
+vim.opt.cursorline = true
+
