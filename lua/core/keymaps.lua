@@ -18,6 +18,3 @@ end, { noremap = true, silent = true, desc = "Show buffer diagnostics" })
 vim.keymap.set("n", "<leader>P", function()
   require("telescope.builtin").diagnostics()
 end, { noremap = true, silent = true, desc = "Search workspace diagnostics" })
-
--- Lazygit
-vim.api.nvim_set_keymap("n", "<leader>g", ":LazyGit<CR>", { noremap = true, silent = true })

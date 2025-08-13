@@ -14,10 +14,6 @@ return {
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
     {
-        "kdheepak/lazygit.nvim",
-        event = "VeryLazy"
-    },
-    {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         event = "UiEnter"
