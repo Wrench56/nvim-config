@@ -28,3 +28,9 @@ vim.keymap.set("n", "<leader>ff", tb("find_files"), { desc = "Telescope find fil
 vim.keymap.set("n", "<leader>fg", tb("live_grep"),  { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", tb("buffers"),    { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", tb("help_tags"),  { desc = "Telescope help tags" })
+
+-- Window navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
