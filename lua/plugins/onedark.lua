@@ -1,3 +1,10 @@
 -- [[ Onedark.nvim colorscheme ]]
 
-require("onedark").load()
+return {
+  "navarasu/onedark.nvim",
+  priority = 99,
+  lazy = false,
+  config = function()
+    require("onedark").load()
+  end,
+}

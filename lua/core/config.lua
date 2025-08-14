@@ -20,7 +20,9 @@ vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 -- Enable cursorline
 vim.opt.cursorline = true
 
+-- Enable sign column
+vim.opt.signcolumn = "yes"
+
 -- Set custom split layout
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-

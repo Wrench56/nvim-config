@@ -1,16 +1,20 @@
 -- [[ Nvim-Tree file explorer ]]
 
-require("nvim-tree").setup({
-    sort = {
-        sorter = "case_sensitive"
+return {
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      { "<leader>e", function()
+          require("nvim-tree.api").tree.toggle()
+        end,
+        desc = "Toggle file explorer"
+      },
     },
-    view = {
-        width = 30
+    opts = {
+      sort = { sorter = "case_sensitive" },
+      view = { width = 30 },
+      renderer = { group_empty = true },
     },
-    renderer = {
-        group_empty = true
-    }
-})
-
-local api = require("nvim-tree.api")
-vim.keymap.set("n", "<leader>e", api.tree.toggle, { desc = "Toggle file explorer" })
+  }
+}

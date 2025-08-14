@@ -1,1 +1,8 @@
-require('gitsigns').setup()
+-- [[ Gitsigns ]]
+
+return {
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {}
+  }
+}
