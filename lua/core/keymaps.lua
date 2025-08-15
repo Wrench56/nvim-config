@@ -10,9 +10,51 @@ vim.api.nvim_set_keymap("n", "<leader>t", ":vsp | term<CR>a", { noremap = true, 
 
 -- Diagnostics
 -- Local buffer
+local diag_ll = { enabled = false, src_win = nil, src_buf = nil }
+
 vim.keymap.set("n", "<leader>p", function()
-  vim.diagnostic.setloclist()
+  diag_ll.src_win = vim.api.nvim_get_current_win()
+  diag_ll.src_buf = vim.api.nvim_get_current_buf()
+  diag_ll.enabled = true
+
+  vim.api.nvim_win_call(diag_ll.src_win, function()
+    vim.diagnostic.setloclist({ open = true })
+  end)
 end, { noremap = true, silent = true, desc = "Show buffer diagnostics" })
+
+-- Auto-update the diagnostics buffer on new diagnostics
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+  callback = function(args)
+    if not diag_ll.enabled then return end
+    if diag_ll.src_buf ~= args.buf then return end
+    if not vim.api.nvim_win_is_valid(diag_ll.src_win) then
+      diag_ll.enabled = false
+      return
+    end
+
+    vim.api.nvim_win_call(diag_ll.src_win, function()
+      vim.diagnostic.setloclist({ open = true })
+    end)
+  end,
+})
+
+vim.api.nvim_create_autocmd("WinClosed", {
+  callback = function(ev)
+    local closed_win = tonumber(ev.match)
+
+    if diag_ll.enabled and diag_ll.src_win == closed_win then
+      diag_ll.enabled = false
+      return
+    end
+
+    if diag_ll.enabled and vim.api.nvim_win_is_valid(diag_ll.src_win) then
+      local info = vim.fn.getloclist(vim.fn.win_id2win(diag_ll.src_win), { winid = 0 })
+      if type(info) == "table" and info.winid and info.winid == closed_win then
+        diag_ll.enabled = false
+      end
+    end
+  end,
+})
 
 -- Workspace
 vim.keymap.set("n", "<leader>P", function()
