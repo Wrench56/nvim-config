@@ -7,6 +7,28 @@ vim.g.maplocalleader = " "
 vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 vim.api.nvim_set_keymap("t", "<C-w><C-w>", [[<C-\><C-n><C-w>w]], { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>t", ":vsp | term<CR>a", { noremap = true, silent = true })
+vim.keymap.set({"t", "n"}, "<C-l>",
+  function()
+    bufnr = bufnr or 0
+    if vim.bo[bufnr].buftype ~= "terminal" then return end
+
+    local job = vim.b[bufnr].terminal_job_id
+    if not job then return end
+
+    local prev_local  = vim.opt_local.scrollback:get()
+    local prev_global = vim.opt_global.scrollback:get()
+
+    vim.opt_local.scrollback  = 1
+    vim.opt_global.scrollback = 1
+    vim.api.nvim_chan_send(vim.b.terminal_job_id, "cls || clear\r\n")
+
+    vim.schedule(function()
+      vim.opt_local.scrollback  = prev_local
+      vim.opt_global.scrollback = prev_global
+    end)
+  end,
+  { noremap = true, silent = true, desc = "Clear terminal" }
+)
 
 -- Diagnostics
 -- Local buffer
