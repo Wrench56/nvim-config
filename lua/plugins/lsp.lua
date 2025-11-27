@@ -7,10 +7,10 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
-      local lspconfig = require("lspconfig")
-      local default_cap = lspconfig.util.default_config.capabilities or vim.lsp.protocol.make_client_capabilities()
       local cmp_cap = require("cmp_nvim_lsp").default_capabilities()
-      lspconfig.util.default_config.capabilities = vim.tbl_deep_extend("force", default_cap, cmp_cap)
+      vim.lsp.config('*', {
+          capabilities = cmp_cap,
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         desc = "LSP keymaps",
@@ -31,10 +31,10 @@ return {
       })
 
       -- LSP Servers --
-      lspconfig.asm_lsp.setup({})
-      lspconfig.ccls.setup({})
+      vim.lsp.enable("asm_lsp")
+      vim.lsp.enable("ccls")
 
-      lspconfig.rust_analyzer.setup({
+      vim.lsp.config("rust_analyzer", {
         settings = {
           ["rust-analyzer"] = {
             check = { command = "clippy" },
