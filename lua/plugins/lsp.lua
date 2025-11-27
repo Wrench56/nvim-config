@@ -33,6 +33,7 @@ return {
       -- LSP Servers --
       vim.lsp.enable("asm_lsp")
       vim.lsp.enable("ccls")
+      vim.lsp.enable("gopls")
 
       vim.lsp.config("rust_analyzer", {
         settings = {
