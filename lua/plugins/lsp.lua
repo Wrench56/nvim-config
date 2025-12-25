@@ -34,6 +34,7 @@ return {
       vim.lsp.enable("asm_lsp")
       vim.lsp.enable("ccls")
       vim.lsp.enable("gopls")
+      vim.lsp.enable("ocamllsp")
 
       vim.lsp.config("rust_analyzer", {
         settings = {
