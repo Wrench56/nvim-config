@@ -30,6 +30,11 @@ vim.keymap.set({"t", "n"}, "<C-l>",
   { noremap = true, silent = true, desc = "Clear terminal" }
 )
 
+-- Open manpages for current word
+vim.keymap.set('n', '<leader>k', function()
+    vim.cmd('Man ' .. vim.fn.expand('<cword>'))
+end)
+
 -- Diagnostics
 -- Local buffer
 local diag_ll = { enabled = false, src_win = nil, src_buf = nil }
