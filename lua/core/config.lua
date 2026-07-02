@@ -26,3 +26,9 @@ vim.opt.signcolumn = "yes"
 -- Set custom split layout
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Persistency
+vim.o.undofile = true
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.writebackup = false
