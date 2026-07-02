@@ -6,6 +6,9 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Enable line number
 vim.wo.number = true
+vim.o.termguicolors = true
+vim.o.scrolloff = 8
+vim.o.sidescrolloff = 8
 
 -- Configure <Tab> behaviour
 vim.o.tabstop = 4
